@@ -29,8 +29,9 @@ def main():
     start_time = datetime.now()
     traceability_path = dfd_path.replace(".json", "") + "_traceability.json"
     model = load_model(dfd_path, traceability_path, "TUHH")
+    current_dir = os.getcwd()
 
-    os.makedirs(os.path.dirname("./output"), exist_ok=True)
+    os.makedirs(os.path.join(current_dir, "output"), exist_ok=True)
 
     name = dfd_path.split("models/")[1]
     result = rules.r01(model)
