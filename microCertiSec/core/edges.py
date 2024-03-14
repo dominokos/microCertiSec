@@ -1,4 +1,4 @@
-from core.results import CResults
+from microCertiSec.core.results import CResults
 
 
 class CEdges:

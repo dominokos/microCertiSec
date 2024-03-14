@@ -1,4 +1,4 @@
-from core.node import CNode
+from microCertiSec.core.node import CNode
 
 
 class CEdge:

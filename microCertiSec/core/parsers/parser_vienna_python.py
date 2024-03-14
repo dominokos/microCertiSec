@@ -1,10 +1,10 @@
 import json
 
-from core.node import CNode
-from core.edge import CEdge
-from core.nodes import CNodes
-from core.edges import CEdges
-from core.model import CModel
+from microCertiSec.core.node import CNode
+from microCertiSec.core.edge import CEdge
+from microCertiSec.core.nodes import CNodes
+from microCertiSec.core.edges import CEdges
+from microCertiSec.core.model import CModel
 
 
 nodes, edges = set(), set()

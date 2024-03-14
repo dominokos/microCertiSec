@@ -1,10 +1,10 @@
 import json
 
-from core.node import CNode
-from core.edge import CEdge
-from core.nodes import CNodes
-from core.edges import CEdges
-from core.model import CModel
+from microCertiSec.core.node import CNode
+from microCertiSec.core.edge import CEdge
+from microCertiSec.core.nodes import CNodes
+from microCertiSec.core.edges import CEdges
+from microCertiSec.core.model import CModel
 
 def parser(dfd_path: str, traceability_path: str) -> CModel:
     """Parser for JSON files structured following the TUHH style.

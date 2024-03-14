@@ -1,8 +1,8 @@
 
-from .edge import CEdge
-from .node import CNode
-from .edges import CEdges
-from .nodes import CNodes
+from microCertiSec.core.edge import CEdge
+from microCertiSec.core.node import CNode
+from microCertiSec.core.edges import CEdges
+from microCertiSec.core.nodes import CNodes
 
 
 class CModel:

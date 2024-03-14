@@ -1,12 +1,12 @@
 import json
 
-from core.node import CNode
-from core.edge import CEdge
-from core.nodes import CNodes
-from core.edges import CEdges
-from core.model import CModel
-from core.parsers.parser_tuhh_json import parser as parser_tuhh_json
-from core.parsers.parser_vienna_python import parser as parser_vienna_python
+from microCertiSec.core.node import CNode
+from microCertiSec.core.edge import CEdge
+from microCertiSec.core.nodes import CNodes
+from microCertiSec.core.edges import CEdges
+from microCertiSec.core.model import CModel
+from microCertiSec.core.parsers.parser_tuhh_json import parser as parser_tuhh_json
+from microCertiSec.core.parsers.parser_vienna_python import parser as parser_vienna_python
 
 
 nodes, edges = set(), set()

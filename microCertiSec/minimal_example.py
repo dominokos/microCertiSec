@@ -1,5 +1,5 @@
-from core.load_model import load_model
-import library_of_rules.rule_library as rules
+from microCertiSec.core.load_model import load_model
+import microCertiSec.library_of_rules.rule_library as rules
 
 model = load_model("./dfd.json", "./traceability.json")
 
