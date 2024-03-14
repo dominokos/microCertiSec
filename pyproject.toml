@@ -18,7 +18,10 @@ classifiers = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/microCertiSec"]
+packages = [
+  "src/microCertiSec/**"
+]
+
 
 [project.urls]
 Homepage = "https://github.com/dominokos/microCertiSec"
