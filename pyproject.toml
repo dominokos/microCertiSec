@@ -22,7 +22,7 @@ packages = [
   "src/microCertiSec"
 ]
 
-
+[tool.hatch.version]
 [project.urls]
 Homepage = "https://github.com/dominokos/microCertiSec"
 Issues = "https://github.com/dominokos/microCertiSec/issues"
