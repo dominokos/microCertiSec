@@ -50,7 +50,7 @@ def main():
 
 def microCertiSec_API(model_path: str, traceability_path: str, rule: str):
 
-    model = load_model(model_path, traceability_path, "VIENNA")
+    model = load_model(model_path, traceability_path, "TUHH")
 
     d = {"r01": r01,
          "r02": r02,
