@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 import json
 
-from microCertiSec import microCertiSec_API
+from microCertiSec.microCertiSec import microCertiSec_API
 
 app = Flask(__name__, instance_relative_config = True)
 
