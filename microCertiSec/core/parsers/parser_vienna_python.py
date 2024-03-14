@@ -22,7 +22,8 @@ def parser(dfd_path: str, traceability_path: str) -> CModel:
         dfd = dfd_file.readlines()
 
     with open(traceability_path, "r") as traceability_file:
-        traceability_raw = json.load(traceability_file)
+        json_data = traceability_file.read()
+        traceability_raw = json.load(json_data)
 
     node_traces, edge_traces = dict(), dict()
     for trace in traceability_raw:
