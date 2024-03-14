@@ -19,7 +19,7 @@ classifiers = [
 
 [tool.hatch.build.targets.wheel]
 packages = [
-  "src/microCertiSec/**"
+  "src/microCertiSec"
 ]
 
 
