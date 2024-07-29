@@ -9,9 +9,8 @@ Please check the description and minimal example shown in the repository's main 
 The library consists of the following 25 rules, which are shown here in natural language and contained as queries in our rule specification language in ```/rule_library.py```:
 | ID | Rule |
 | ----- | ----- |
+Authentication/Authorization
 | 1 | There should be a single service as entry point. |
-| 2 | All entry points should have a circuit breaker. |
-| 3 | All entry points should have a load balancer. |
 | 4 | All entry points should perform authorization. |
 | 5 | All entry points should perform authentication. |
 | 6 | All connections between services should be authorized. |
@@ -21,8 +20,10 @@ The library consists of the following 25 rules, which are shown here in natural 
 | 10 | No service that performs authorization should perform any other business functionality. |
 | 11 | No service that performs authentication should perform any other business functionality. |
 | 12 | There should be a service limiting the number of login attempts. |
+Encryption
 | 13 | All connections between a service and an external entity should be encrypted. |
 | 14 | All connections between two services should be encrypted. |
+Logging
 | 15 | All services should perform logging. |
 | 16 | There should be a single central logging subsystem. |
 | 17 | There should be a message broker. |
@@ -31,7 +32,11 @@ The library consists of the following 25 rules, which are shown here in natural 
 | 20 | There should be a monitoring dashboard. |
 | 21 | All services should be connected to a monitoring dashboard. |
 | 22 | All services should sanitize logs. |
+Availability
+| 2 | All entry points should have a circuit breaker. | 
+| 3 | All entry points should have a load balancer. |
+Service Registry
 | 23 | There should be a single service registry. |
 | 24 | All service registries should have validation checks for incoming requests. |
+Secret Management
 | 25 | There should be a single central secret store. |
-
