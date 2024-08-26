@@ -84,7 +84,7 @@ def microCertiSec_API(model_path: str, traceability_path: str, rule: str):
 
     return result
 
-def model_API(model_path, traceability_path):
+def model_api(model_path, traceability_path):
     return load_model(model_path, traceability_path)
 
 

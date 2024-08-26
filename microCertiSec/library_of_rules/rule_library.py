@@ -99,15 +99,14 @@ def r10(model):
     """No service that performs authorization should perform any other business functionality.
     """
 
-    return model.nodes.that_are("authorization_server").none_are([s for s in functionality_stereotypes if (s != "authorization_server" and s != "token_server")])
+    return model.nodes.that_are("authorization_server").none_are([s for s in functionality_stereotypes if (s != "authorization_server" and s != "authentication_server" and s != "token_server")])
 
 
 def r11(model):
     """No service that performs authentication should perform any other business functionality.
     """
 
-    return model.nodes.that_are("authentication_server").none_are([s for s in functionality_stereotypes if s != "authentication_server"])
-
+    return model.nodes.that_are("authentication_server").none_are([s for s in functionality_stereotypes if (s != "authentication_server" and s != "authorization_server")])
 
 def r12(model):
     """There should be a service limiting the number of login attempts.
