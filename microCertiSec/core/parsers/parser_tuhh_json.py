@@ -6,7 +6,7 @@ from microCertiSec.core.nodes import CNodes
 from microCertiSec.core.edges import CEdges
 from microCertiSec.core.model import CModel
 
-def parser(dfd_path: str, traceability_path: str) -> CModel:
+def parser(dfd_path: str) -> CModel:
     """Parser for JSON files structured following the TUHH style.
     Takes paths to dfd and traceability file, returns CModels object.
     """
@@ -15,9 +15,6 @@ def parser(dfd_path: str, traceability_path: str) -> CModel:
 
     with open(dfd_path, "r") as dfd_file:
         dfd = json.load(dfd_file)
-
-    with open(traceability_path, "r") as traceability_file:
-        traceability = json.load(traceability_file)
 
     for node in dfd["services"]:
         stereotypes = node["stereotypes"]

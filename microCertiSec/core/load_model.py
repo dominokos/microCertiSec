@@ -20,7 +20,7 @@ def load_model(dfd_path: str, traceability_path: str = None, parser: str = "TUHH
     global nodes, edges, traceability
 
     if parser == "TUHH":
-        return parser_tuhh_json(dfd_path, traceability_path)
+        return parser_tuhh_json(dfd_path)
     elif parser == "VIENNA":
         return parser_vienna_python(dfd_path, traceability_path)
     if traceability_path:
