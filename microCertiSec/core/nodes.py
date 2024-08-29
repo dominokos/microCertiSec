@@ -39,9 +39,8 @@ class CNodes:
             return_string += f"\n   - {node.name}; stereotypes {node.stereotypes}; {node.traceability}"#"; tagged_values {node.tagged_values}"
         return return_string
 
-
-    def get_nodes(self):
-        return self.nodes
+    def update_nodes(self, nodes):
+        self.nodes = nodes
 
 
     # Scope transformations

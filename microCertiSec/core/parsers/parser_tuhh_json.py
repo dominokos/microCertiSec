@@ -13,6 +13,8 @@ def parser(dfd_path: str) -> CModel:
 
     nodes, edges = set(), set()
 
+    model_name = dfd_path.split("models/")[1] 
+
     with open(dfd_path, "r") as dfd_file:
         dfd = json.load(dfd_file)
 
@@ -24,7 +26,7 @@ def parser(dfd_path: str) -> CModel:
         node_traceability = "traceability"
         connected_nodes = [i["receiver"] for i in dfd["information_flows"] if i["sender"] == node["name"]]
 
-        nodes.add(CNode(node["name"], stereotypes, node_traceability, connected_nodes))
+        nodes.add(CNode(node["name"], stereotypes, node_traceability, connected_nodes, node["tagged_values"]))
 
     for node in dfd["external_entities"]:
         stereotypes = node["stereotypes"]
@@ -32,7 +34,7 @@ def parser(dfd_path: str) -> CModel:
             stereotypes[id] = (stereotype, "traceability")
         stereotypes.append(("external_entity", "traceability"))
         node_traceability = "traceability"
-        nodes.add(CNode(node["name"], stereotypes, node_traceability))
+        nodes.add(CNode(node["name"], stereotypes, node_traceability, set(), node["tagged_values"]))
 
 
     for information_flow in dfd["information_flows"]:
@@ -56,7 +58,7 @@ def parser(dfd_path: str) -> CModel:
         if isinstance(receiver, str):
             receiver = CNode(information_flow["receiver"], list(), "No traceability found.")
 
-        edges.add(CEdge(sender, receiver, stereotypes, flow_traceability))
+        edges.add(CEdge(sender, receiver, stereotypes, flow_traceability, information_flow["tagged_values"]))
 
     # Replacing node names in connected_nodes with corresponding CNode objects
     for node1 in nodes:
@@ -65,7 +67,7 @@ def parser(dfd_path: str) -> CModel:
                 node1.connected_nodes.append(node2)
                 node1.connected_nodes.remove(node2.name)
 
-    return CModel("testmodel", CNodes(nodes), CEdges(edges))
+    return CModel(model_name, CNodes(nodes), CEdges(edges))
 
 
 
