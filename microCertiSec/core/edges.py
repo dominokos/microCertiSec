@@ -17,6 +17,9 @@ class CEdges:
         for edge in self.edges:
             return_string += f"\n   - {edge.sender.name} -> {edge.receiver.name}; stereotypes {edge.stereotypes}"#"; tagged_values {edge.tagged_values}"
         return return_string
+    
+    def update_edges(self, edges):
+        self.edges = edges
 
 
     def edge_exists(self, node1, node2):
