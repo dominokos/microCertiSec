@@ -282,12 +282,17 @@ class CNodes:
             property_check_evidence["verdict"] = False
         else:
             for node in self.nodes:
+                some_connected_node_has_stereotypes = False
                 for connected_node in node.connected_nodes:
+                    number_of_stereotypes_held_by_connected_node = 0
                     for stereotype in stereotypes:
                         if stereotype in [stereotype for (stereotype, traceability) in connected_node.stereotypes]:
-                            property_check_evidence["fulfilled"].append((node.name, node.stereotypes, node.traceability))
-                        else:
-                            property_check_evidence["violated"].append((node.name, node.stereotypes, node.traceability))
+                            number_of_stereotypes_held_by_connected_node += 1
+                    if number_of_stereotypes_held_by_connected_node == len(stereotypes):
+                        property_check_evidence["fulfilled"].append((node.name, node.stereotypes, node.traceability))
+                        some_connected_node_has_stereotypes = True
+                if not some_connected_node_has_stereotypes:
+                    property_check_evidence["violated"].append((node.name, node.stereotypes, node.traceability))
 
             property_check_evidence["fulfilled"] = list(property_check_evidence["fulfilled"])
             property_check_evidence["violated"] = list(property_check_evidence["violated"])
