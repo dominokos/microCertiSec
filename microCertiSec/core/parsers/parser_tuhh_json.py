@@ -38,7 +38,9 @@ def parser(dfd_path: str) -> CModel:
         if not ("external_entity", "traceability") in stereotypes:
             stereotypes.append(("external_entity", "traceability"))
         node_traceability = "traceability"
-        nodes.add(CNode(node["name"], stereotypes, node_traceability, set(), node["tagged_values"]))
+        connected_nodes = [i["receiver"] for i in dfd["information_flows"] if i["sender"] == node["name"]]
+
+        nodes.add(CNode(node["name"], stereotypes, node_traceability, connected_nodes, node["tagged_values"]))
 
 
     for information_flow in dfd["information_flows"]:
