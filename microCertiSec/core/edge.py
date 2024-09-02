@@ -6,7 +6,7 @@ class CEdge:
     Each edge is represented by its sender and receiver, stereotypes, and tagged values.
     """
 
-    def __init__(self, sender: CNode, receiver: CNode, stereotypes, traceability, tagged_values = {}):
+    def __init__(self, sender: CNode, receiver: CNode, stereotypes: list, traceability, tagged_values = {}):
         self.sender = sender
         self.receiver = receiver
         self.stereotypes = stereotypes

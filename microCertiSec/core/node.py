@@ -4,7 +4,7 @@ class CNode:
     A node is represented by its name, stereotypes and tagged_values.
     """
 
-    def __init__(self, name, stereotypes, traceability, connected_nodes = set(), tagged_values = {}):
+    def __init__(self, name: str, stereotypes: list, traceability, connected_nodes: set = set(), tagged_values = {}):
         self.name = name
         self.stereotypes = stereotypes
         self.traceability = traceability
