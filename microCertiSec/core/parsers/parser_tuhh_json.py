@@ -22,8 +22,10 @@ def parser(dfd_path: str) -> CModel:
         stereotypes = node["stereotypes"]
         for id, stereotype in enumerate(stereotypes):
             stereotypes[id] = (stereotype, "traceability")
-        if not ("service", "traceability") in stereotypes:
+        if not ("service", "traceability") in stereotypes and not ("message_broker", "traceability") in stereotypes:
             stereotypes.append(("service", "traceability"))
+        elif not ("internal", "traceability") in stereotypes:
+            stereotypes.append(("internal", "traceability"))
         node_traceability = "traceability"
         connected_nodes = [i["receiver"] for i in dfd["information_flows"] if i["sender"] == node["name"]]
 
