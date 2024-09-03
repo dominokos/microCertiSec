@@ -142,8 +142,8 @@ class CEdges:
             stereotypes = stereotype
 
         if len(self.edges) == 0:
-            # no edges fulfill scope transformation --> verdict false
-            property_check_evidence["verdict"] = False
+            # any statement of the form (∀x∈X,E(x)), where E(x) is a statement, is true when X=∅
+            property_check_evidence["verdict"] = True
         else:
             for edge in self.edges:
                 for stereotype in stereotypes:

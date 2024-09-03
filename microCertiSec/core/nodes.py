@@ -63,6 +63,25 @@ class CNodes:
         scoping_evidence.append(new_scoping_evidence)
         return CNodes([node for node in self.nodes if stereotype in [stereotype for (stereotype, traceability) in node.stereotypes]], query, scoping_evidence)
 
+    def excluding(self, stereotype, transformation = "except"):
+        """Returns CNodes object where nodes with a specific stereotype are excluded.
+        """
+
+        query = self.query + f".{transformation}(\"{str(stereotype)}\")"
+        
+        scoping_evidence = self.scoping_evidence
+        node_names_string = str()
+        for node in self.nodes:
+            node_names_string += f"{node.name}, "
+        node_names_string = node_names_string[:-2]
+        new_scoping_evidence = {"scope_transformation": f"{transformation}(\"{str(stereotype)}\")",
+                            "input_scope": node_names_string,
+                            "included": [(node.name, node.stereotypes, node.traceability) for node in self.nodes if not stereotype in [stereotype for (stereotype, traceability) in node.stereotypes]],
+                            "excluded": [(node.name, node.stereotypes, node.traceability) for node in self.nodes if (stereotype in [stereotype for (stereotype, traceability) in node.stereotypes])]}
+
+        scoping_evidence.append(new_scoping_evidence)
+        return CNodes([node for node in self.nodes if not stereotype in [stereotype for (stereotype, traceability) in node.stereotypes]], query, scoping_evidence)
+
 
     def that_have(self, stereotype):
         """Alias for that_are().
@@ -125,8 +144,8 @@ class CNodes:
             stereotypes = stereotype
 
         if len(self.nodes) == 0:
-            # no nodes fulfill scope transformation --> verdict false
-            property_check_evidence["verdict"] = False
+            # any statement of the form (∀x∈X,E(x)), where E(x) is a statement, is true when X=∅
+            property_check_evidence["verdict"] = True
         else:
             for node in self.nodes:
                 for stereotype in stereotypes:
@@ -278,8 +297,8 @@ class CNodes:
 
 
         if len(self.nodes) == 0:
-            # no nodes fulfill scope transformation --> verdict false
-            property_check_evidence["verdict"] = False
+            # any statement of the form (∀x∈X,E(x)), where E(x) is a statement, is true when X=∅
+            property_check_evidence["verdict"] = True
         else:
             for node in self.nodes:
                 some_connected_node_has_stereotypes = False
