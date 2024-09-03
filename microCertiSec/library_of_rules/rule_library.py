@@ -154,7 +154,7 @@ def r18(model):
     """All services that perform logging should be connected to a message broker.
     """
 
-    return model.nodes.that_are("internal").that_have("local_logging").all_are_connected_to("message_broker")
+    return model.nodes.that_are("internal").that_have("local_logging").excluding("message_broker").all_are_connected_to("message_broker")
 
 
 def r19(model):
@@ -175,7 +175,7 @@ def r21(model):
     """All services should be connected to a monitoring dashboard.
     """
 
-    return model.nodes.that_are("service").all_are_connected_to("monitoring_dashboard")
+    return model.nodes.that_are("service").excluding("monitoring_dashboard").all_are_connected_to("monitoring_dashboard")
 
 
 def r22(model):
