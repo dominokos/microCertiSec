@@ -161,7 +161,7 @@ def r19(model):
     """No service that performs logging should be connected to a central logging subsystem.
     """
 
-    return model.nodes.that_have("local_logging").none_are_connected_to("logging_server")
+    return model.nodes.that_have("local_logging").excluding("message_broker").none_are_connected_to("logging_server")
 
 
 def r20(model):
