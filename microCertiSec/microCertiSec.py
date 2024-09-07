@@ -48,7 +48,7 @@ def main():
     return
 
 
-def microCertiSec_API(model_path: str, traceability_path: str, rule: str):
+def microCertiSec_API(model_path: str, rule: str, traceability_path: str = None):
 
     model = load_model(model_path, traceability_path, "TUHH")
 
