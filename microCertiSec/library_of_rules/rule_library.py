@@ -71,14 +71,14 @@ def r06(model):
     """All connections between services should be authorized.
     """
 
-    return model.edges.sender_is("internal").receiver_is("internal").all_are("authorized")
+    return model.edges.sender_is("service").receiver_is("service").all_are("authorized")
 
 
 def r07(model):
     """All connections between services should be authenticated.
     """
 
-    return model.edges.sender_is("internal").receiver_is("internal").all_are("authenticated")
+    return model.edges.sender_is("service").receiver_is("service").all_are("authenticated")
 
 
 def r08(model):
@@ -154,7 +154,7 @@ def r18(model):
     """All services that perform logging should be connected to a message broker.
     """
 
-    return model.nodes.that_are("internal").that_have("local_logging").excluding("message_broker").all_are_connected_to("message_broker")
+    return model.nodes.that_are("service").that_have("local_logging").excluding("message_broker").all_are_connected_to("message_broker")
 
 
 def r19(model):
